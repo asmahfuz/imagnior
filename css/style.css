@@ -47,7 +47,49 @@ h2 {
   shape-rendering: crispEdges;
 }
 
-.state-boundary {
-  fill: none;
-  stroke: #fff;
+.states {
+  stroke: #000;
+  fill-opacity: .2;
 }
+
+.state.selected {
+  fill: red;
+  stroke: #000;
+}
+
+#legend {
+  padding: 1.5em 0 0 1.5em;
+}
+
+li.key {
+  border-top-width: 15px;
+  border-top-style: solid;
+  font-size: .75em;
+  width: 10%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 150px;
+  height: 25px;
+  padding: 2px;
+  font-size: 10px;
+  background: #FFFFE0;
+  border: 1px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+
+/* Legend Position Style */
+.legend {
+  position:absolute;
+  left:800px;
+  top:350px;
+}
+
+
+

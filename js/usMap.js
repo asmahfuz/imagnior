@@ -12,9 +12,27 @@ Usmap = function(_data){
 
 
 Usmap.prototype.initVis = function(){
+
+
     var vis = this;
     //console.log(vis.us);
     vis.width = 960, vis.height = 580;  // map width and height, matches
+
+
+    function getColor(d) {
+        return  d > 200 ? '#800026' :
+                d > 110  ? '#BD0026' :
+                d > 90  ? '#E31A1C' :
+                d > 70  ? '#FC4E2A' :
+                d > 50  ? '#FD8D3C' :
+                d > 30  ? '#FEB24C' :
+                d > 10  ? '#FED976' :
+                          '#FFEDA0'};
+
+    //vis.color_domain = [50, 150, 350, 750, 1500]
+    vis.ext_color_domain = [0, 10, 30, 50, 70, 90, 110, 200]
+    vis.legend_labels = ["< 10", "10+", "30+", "50+", "70+", "90+", "110+", "> 200"]
+
 
     vis.projection = d3.geo.albersUsa()   // define our projection with parameters
         .scale(600)
@@ -30,16 +48,74 @@ Usmap.prototype.initVis = function(){
         .attr("width", vis.width)
         .attr("height", vis.height);
 
-    vis.graticule = d3.geo.graticule();
+    vis.div = d3.select("#map").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
-    vis.svg.insert("path", ".graticule")
-        .datum(topojson.feature(vis.us, vis.us.objects.land))
-        .attr("class", "land")
-        .attr("d", vis.path);
 
-    vis.svg.insert("path", ".graticule")
-        .datum(topojson.mesh(vis.us, vis.us.objects.states, function(a, b) { return a !== b; }))
-        .attr("class", "state-boundary")
-        .attr("d", vis.path);
+
+
+    vis.svg.selectAll("path")
+        .data(vis.us.features)
+        .enter()
+        .append("path")
+        .attr("d", vis.path)
+        .style("stroke", "#fff")
+        .style("stroke-width", "1")
+        .style("fill", function(d) {
+            // Get data value
+            var value = d.properties.cn;
+            if (value) {
+                //If value exists…
+                return getColor(value);
+            } else {
+                //If value is undefined…
+                return "rgb(213,222,217)";
+            }
+        })
+
+
+        //Adding mouseevents
+
+        .on("mouseover", function(d) {
+            vis.div.transition()
+                .duration(200)
+                .style("opacity", .9);
+                vis.div.text(d.properties.name + " : " + d.properties.cn)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+        })
+
+        .on("mouseout", function(d) {
+            vis.div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+
+
+
+    //Adding legend for our Choropleth
+
+    vis.legend = vis.svg.selectAll("g.legend")
+        .data(vis.ext_color_domain)
+        .enter().append("g")
+        .attr("class", "legend");
+
+    vis.ls_w = 20, vis.ls_h = 20;
+
+    vis.legend.append("rect")
+        .attr("x", 800)
+        .attr("y", function(d, i){ return vis.height - (i*vis.ls_h) - 2*vis.ls_h;})
+        .attr("width", vis.ls_w)
+        .attr("height", vis.ls_h)
+        .style("fill", function(d, i) { return getColor(d); })
+        .style("opacity", 0.8);
+
+    vis.legend.append("text")
+        .attr("x",760)
+        .attr("y", function(d, i){ return vis.height - (i*vis.ls_h) - vis.ls_h - 4;})
+        .text(function(d, i){ return vis.legend_labels[i]; });
+
+
 
 }
