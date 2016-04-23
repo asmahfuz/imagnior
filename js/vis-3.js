@@ -27,7 +27,7 @@
 
 		    
 		// Adds the svg canvas
-		var svg = d3.select("#sales").append("svg")
+		var svg = d3.select("#chart-area3").append("svg")
 		    .append("svg")
 		        .attr("width", 960 )
 		        .attr("height", 580 )

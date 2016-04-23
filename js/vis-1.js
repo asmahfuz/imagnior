@@ -53,8 +53,6 @@ Usmap.prototype.initVis = function(){
         .style("opacity", 0);
 
 
-
-
     vis.svg.selectAll("path")
         .data(vis.us.features)
         .enter()
