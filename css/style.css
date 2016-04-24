@@ -7,8 +7,8 @@ body {
 }
 
 h1 {
-  font-weight: 100;
-  margin-top: 50px;
+  font-weight: 500;
+  margin-top: 25px;
 }
 
 h2 {
@@ -76,7 +76,7 @@ div.tooltip {
   width: 150px;
   height: 25px;
   padding: 2px;
-  font-size: 10px;
+  font-size: 12px;
   background: #FFFFE0;
   border: 1px;
   border-radius: 8px;
@@ -90,6 +90,27 @@ div.tooltip {
   left:800px;
   top:350px;
 }
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+
+.link {
+  fill: none;
+  stroke: blue;
+  //stroke-width: .5px;
+}
+
+path.link {
+  fill: none;
+  stroke: grey;
+  stroke-width: .5px;
+}
+
+
 
 
 

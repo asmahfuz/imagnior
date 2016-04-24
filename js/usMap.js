@@ -16,7 +16,7 @@ Usmap.prototype.initVis = function(){
 
     var vis = this;
     //console.log(vis.us);
-    vis.width = 960, vis.height = 580;  // map width and height, matches
+    vis.width = 850, vis.height = 330;  // map width and height, matches
 
 
     function getColor(d) {
@@ -35,7 +35,7 @@ Usmap.prototype.initVis = function(){
 
 
     vis.projection = d3.geo.albersUsa()   // define our projection with parameters
-        .scale(600)
+        .scale(700)
         .translate([vis.width / 2, vis.height / 2])
         .precision(.1);
 
@@ -104,7 +104,7 @@ Usmap.prototype.initVis = function(){
     vis.ls_w = 20, vis.ls_h = 20;
 
     vis.legend.append("rect")
-        .attr("x", 800)
+        .attr("x", 635)
         .attr("y", function(d, i){ return vis.height - (i*vis.ls_h) - 2*vis.ls_h;})
         .attr("width", vis.ls_w)
         .attr("height", vis.ls_h)
@@ -112,7 +112,7 @@ Usmap.prototype.initVis = function(){
         .style("opacity", 0.8);
 
     vis.legend.append("text")
-        .attr("x",760)
+        .attr("x",660)
         .attr("y", function(d, i){ return vis.height - (i*vis.ls_h) - vis.ls_h - 4;})
         .text(function(d, i){ return vis.legend_labels[i]; });
 
