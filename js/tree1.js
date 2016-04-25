@@ -12,8 +12,8 @@ Hier1 = function(_data){
 Hier1.prototype.treeChart = function() {
 
     vis = this;
-    vis.width = 600,
-    vis.height = 700;
+    vis.width = 500,
+    vis.height = 600;
 
     vis.tree = d3.layout.tree()
         //.children(function(d) { return d.root?d.root : d.values })
@@ -28,7 +28,7 @@ Hier1.prototype.treeChart = function() {
     vis.diagonal = d3.svg.diagonal()
         .projection(function(d) { return [d.y, d.x]; });
 
-    vis.svg = d3.select("#map").append("svg")
+    vis.svg = d3.select("#chart-area4").append("svg")
         .attr("width", vis.width)
         .attr("height", vis.height)
         .append("g")

@@ -10,7 +10,7 @@ loadData();
 function loadData() {
     queue()
         .defer(d3.csv, "data/Polk_account_info.csv")
-        .defer(d3.csv, "data/Polk_vehicle_info.csv")
+        .defer(d3.csv, "data/Polk_vehicle_info_c.csv")
         //.defer(d3.json, "data/us.json")
         .defer(d3.json, "data/us-states.json")
         .defer(d3.tsv, "data/us-state-names.txt")
@@ -195,8 +195,7 @@ function loadData() {
 
 function createVis() {
 
-
-	//chomap = new Usmap(mdata);
+   chomap = new Usmap(mdata);
    treemap = new Hier1(tdata);
 
 }
