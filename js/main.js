@@ -31,7 +31,6 @@ function loadData() {
 
 
 
-
             for (var i = 0; i < qdata4.length; i++) {
                 // Grab State Name
                 var dataState = qdata4[i].name;
@@ -84,6 +83,7 @@ function loadData() {
 function createVis() {
 
 	chomap = new Usmap(mdata);
+    donut = new Donutchart(mdata);
 
 }
 
