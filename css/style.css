@@ -112,5 +112,73 @@ path.link {
 
 
 
+/*----------------------------Nikunj CSS Starts------------------------*/
+.node circle {    #header{
+  fill: #fff;     margin:0;
+  stroke: steelblue;      background-color: #ffccff;
+  stroke-width: 1.5px;      padding: 9px;
+}
+.container{
+  background-color: #f2f2f2;
+}   }
+.block_container{
+  float: left;
+.link {     width: 100%;
+  fill: none;     margin-top: 20px;
+  stroke: blue;   
+  //stroke-width: .5px;   
+}   }
+.block_img{
+path.link {     background-color: #fff;
+  fill: none;   
+  stroke: grey;   
+  stroke-width: .5px;   
+}   }
+.block_img .header2{
+  text-align: left;
+  margin-bottom: 20px;
+}
+.block_img .header2 img{
+  margin-right: 35px;
+}
+.truck_sales{
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+}
+.truck_sales .truck_header{
+  text-align: left;
+  background-color: #66ffff;
+  margin: 0 0 20px;
+  padding: 10px;
+}
+.top_market{
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+}
+.top_market .market_header{
+  text-align: left;
+  background-color: #66ffff;
+  margin: 0 0 20px;
+  padding: 10px;
+}
+.dealers_network{
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+}
+.dealers_network .dealers_header{
+  text-align: left;
+  background-color: #66ffff;
+  margin: 0 0 20px;
+  padding: 10px;
+}
+/*----------------------------Nikunj CSS Ends------------------------*/
+
+
 
 

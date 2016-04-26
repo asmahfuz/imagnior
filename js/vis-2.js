@@ -1,87 +1,54 @@
-//Establish Drawing Area
-var width = 480,
-   height = 580;
+Saleschart = function(_data){
+    this.us = _data;
+   // this.displayData = []; // see data wrangling
 
-var svg1 = d3.select("#chart-area2").append("svg")
-   .attr("width", width)
-   .attr("height", height);
+    // DEBUG RAW DATA
+    //console.log(this.data);
 
-//Global Variable
-var account;
+    this.initVis();
+}
 
-//Load Data
-d3.csv("data/Polk_account_info.csv",function(error, data) {
-   account = data;
 
-   //console.log(account);
 
-   //Convert Data
-   account.forEach(function (d) {
-       //Convert numeric values to 'numbers'
-       d['PARENT HQ LOCAL FLEET SIZE'] = +d['PARENT HQ LOCAL FLEET SIZE'];
-       d['PARENT HQ NATL. FLEET SIZE'] = +d['PARENT HQ NATL. FLEET SIZE'];
-       d['REGISTRATION LOCAL FLEET SIZE'] = +d['REGISTRATION LOCAL FLEET SIZE'];
-       d['REGISTRATION NATL FLEET SIZE'] = +d['REGISTRATION NATL FLEET SIZE'];
-   });
+Saleschart.prototype.initVis = function(){
 
-   //Count data by State
-   //SALES = account.filter(function(d){
-       //if (d.WHO_region == "African" && d.At_risk>=10000000){
-         //  return d;
-       //}
-   //});
 
-   //Sort data by account.length
-   account.sort(function(a, b){
-       return b.length-a.length;
-   });
+var chart = c3.generate({
+        bindto: '#salesLines',
+        data: {
+          x : 'date',
+          xFormat : '%Y%m%d',
+          columns: [
+              ['date',  '20150101' , '20160101' , '20170101' , '20180101' , '20190101' , '20200101' , '20210101' , '20220101' , '20230101' , '20240101'] ,
+              ['American La France',  0, 28,  317, 201, 133, 57,  87,  61,  93,  0],
+              ['Autocar LLC',  747, 1013,  1058,  1493,  1123, 979, 871, 1153,  882, 453],
+              ['Caterpiller', 0, 0, 0, 0, 0, 0, 28,  323, 408, 290],
+              ['Crane Carrier', 148, 139, 228, 276, 181, 179, 108, 171, 124, 58],
+              ['Freightliner',  51425, 50390, 24356, 22996, 16075, 19786, 28622, 38107, 41837, 23705],
+              ['Hendrickson', 0, 3, 4, 0, 0, 0, 0, 0, 0, 0],
+              ['International', 30731, 33049, 17239, 19029, 17504, 20066, 21249, 21479, 18170, 10147],
+              ['Kenworth',  16360, 18769, 12716, 9756,  6976,  7724,  12771, 15877, 16036, 9314],
+              ['Lodal', 23,  0, 0, 0, 0, 0, 0, 0, 0, 0],
+              ['Mack',  16834, 17354, 8864,  6948,  5333,  5133,  6971,  10312, 9284,  5745],
+              ['Oshkosh', 56,  38,  21,  23, 15,  20,  13,  51,  163, 130],
+              ['Peterbilt', 19668, 22081, 13641, 10396, 7967,  7826,  12074, 15503, 15733, 8600],
+              ['Sterling',  9087,  8885,  5285,  4011,  2263,  1041,  41,  6, 0, 0],
+              ['Volvo', 17689, 19215, 11535, 8843,  4301,  5275,  11623, 13421, 14122, 8639],
+              ['Western Star',  1727,  1919,  1284,  626, 351, 523, 750, 1128,  1636,  851]
+              ,['Total',  166510,  174899,  98565, 86616, 64241, 70629, 97229, 119614,  120511,  69956]
+              ,['Sales',  24000,46000]
 
-   //Total Sales(account.length) SVG Rectangles
-   svg1.selectAll("rect")
-       .data(account)
-       .enter()
-       .append("rect")
-       .style("fill", "blue")//function(d){
-       //return color(d.At_risk);
-       //})
-       .attr("height",15)
-       .attr("width", function (d){
-           return account.length/2000;
-       })
-       .attr("x", 225)
-       .attr("y", function(d,index){
-           return (index * 20)+15;
-       });
+          ]
+        },
+        axis : {
+          x : {
+            type : 'timeseries',
 
-   //Add State Labels for Total sales(account.length)
-   svg1.selectAll(".text_black")
-       .data(account)
-       .enter()
-       .append("text")
-       .text(function(d){
-           return d['REGISTRATION STATE'];
-       })
-       .attr("class", "text_black")
-       .attr("x", 220)
-       .attr("y", function(d, index){
-           return (index * 20) + 27;
-       })
-       .attr("text-anchor", "end");
 
-   //Add Total Sales Labels
-   svg1.selectAll(".text_black1")
-       .data(account)
-       .enter()
-       .append("text")
-       .text(function(d){return (account.length/1.0e3).toFixed(0) + "K";})
-       .attr("class", "text_black1")
-       .attr("x",function(d){
-           return (account.length/2000) + 230;
-       })
-       .attr("y", function(d, index){
-           return (index*20) + 27;
-       })
-       .attr("fill", "black")
-       .attr("font-size", 10)
-       .attr("text-anchor", "start");
-});
+            tick : {
+              format : "%Y" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
+            }
+          }
+        }
+      });
+}

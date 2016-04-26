@@ -6,58 +6,88 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Midterm Project</title>
 
+
+   <link rel="stylesheet" type="text/css" href="css/c3.css">
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/font-awesome.min.css">
    <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="body">
-<h1 id="header"><img src="img/Company_Logo.jpg" style="width:60px;height:60px;"><font color="#000000 ">Sales Dashboard</font></h1>
+
+
+
 <div class = "container">
-   <div class = "row">
-       <div class = "col-sm-4">
-           <h2 class = "header2"><img src="img/Key_Stat_Image1.jpg" style="width:60px;height:60px;">2,400,000</h2>
-           <h4><font color="#000000 ">Tagline</font></h4>
+
+  
+      <!-- HEADER -->
+
+       <div class = "truck_sales">
+          <h1 class="truck_header"><img src="img/logo.png" style="width:60px;height:60px;"><font color="#000000;">  Sales Dashboard</font></h1>
+          
+          <div class = "row">
+              <div class = "col-sm-12">
+                <p id = "blurb"> Volvo, a truck manufacturing company, has a significant of amount of historical sales and customer data but no analytics system to visualize it.</br> This causes delayed decision-making in devising competitive strategies to increase its market share.</p>
+
+             </div>
+          </div>
        </div>
-       <div class = "col-sm-4">
-           <h2 class = "header2"><img src="img/Key_Stat_Image2.jpg" style="width:60px;height:60px;">12,323</h2>
-           <h4><font color="#000000 ">Tagline</font></h4>
+      <!-- HEADER -->
+
+
+
+        
+       <!-- Truck Dealers US MAP -->
+
+       <div class = "truck_sales">
+          <h3 class="truck_header">Volvo Dealer network - Market Penetration</h3>
+          <div class = "row">
+            <div id="map"></div>
+          </div>
        </div>
-       <div class = "col-sm-4">
-           <h2 class = "header2"><img src="img/Key_Stat_Image3.jpg" style="width:60px;height:60px;">15,600</h2>
-           <h4><font color="#000000 ">Tagline</font></h4>
+      <!-- Truck Dealers US MAP -->
+
+
+
+      <!-- Market share and potential Sales -->
+      <div class = "top_market">
+          <h3 class="market_header">Potential Sales and Market Share</h3>
+            <div class = "row">
+
+           
+               <div class = "col-sm-6">
+                   <div id="salesLines"></div>
+               </div>
+
+          
+               <div class = "col-sm-6">
+                   <div id="chart"></div>
+               </div>
+           </div>
+
+      </div>
+      <!-- Market share and potential Sales -->
+
+
+
+
+      <!-- Dealer Network Chart -->
+       <div class = "dealers_network">
+          <h3 class="dealers_header">Sales by Product lines</h3>
+          
+          <div class = "row">
+            <div class = "col-sm-12">
+              <div id="chart-area4"></div>
+            </div>
+          </div>
        </div>
-   </div>
-   <div class = "row">
-       <div class = "col-sm-12">
-           <p id = "blurb"> Company ABC, a truck manufacturing company, has a significant of amount of historical sales and customer data but no analytics system to visualize it. This causes delayed decision-making in devising competitive strategies to increase its market share.</p>
-       </div>
-   </div>
-   <div class = "row">
-       <div class = "col-sm-12">
-           <h3>Truck Sales - Market Penetration</h3>
-           <div id="map"></div>
-       </div>
-   </div>
-   <div class = "row">
-       <div class = "col-sm-12">
-           <h3>Top Markets and Market Share</h3>
-       </div>
-   </div>
-   <div class = "row">
-       <div class = "col-sm-6">
-           <div id="chart-area2"></div>
-       </div>
-       <div class = "col-sm-6">
-           <div id="chart-area3"></div>
-       </div>
-   </div>
-   <div class = "row">
-       <div class = "col-sm-12">
-           <h3>Dealers Network</h3>
-           <div id="chart-area4"></div>
-       </div>
-   </div>
+      <!-- Dealer Network Chart -->
+      
 </div>
+
+
+
+
+<!--  THE ORIGENAL CODE IS HERE -->
 
 
 <!-- Load JS libraries -->
@@ -69,18 +99,20 @@
 <script src="js/colorbrewer.js"></script>
 <script src="js/underscore-min.js"></script>
 <script src="js/underscore.nest.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="js/c3.js"></script>
+
 
 <!-- Visualizations -->
-<script src="js/vis-1.js"></script>
-<!--<script src="js/vis-2.js"></script>-->
+
+<script src="js/vis-2.js"></script>
 <script src="js/vis-3.js"></script>
 <script src="js/vis-4.js"></script>
 <script src="js/tree1.js"></script>
 
 
-
-  <!-- Load data, create visualizations -->
-  <script src="js/main.js"></script>
+<!-- Load data, create visualizations -->
+<script src="js/main.js"></script>
 
 </body>
 </html>

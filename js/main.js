@@ -196,7 +196,9 @@ function loadData() {
 function createVis() {
 
    chomap = new Usmap(mdata);
+   donut = new Donutchart(mdata);
    treemap = new Hier1(tdata);
+   saleschart = new Saleschart();
 
 }
 
