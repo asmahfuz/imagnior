@@ -35,7 +35,7 @@ Usmap.prototype.initVis = function(){
 
 
     vis.projection = d3.geo.albersUsa()   // define our projection with parameters
-        .scale(600)
+        .scale(1000)
         .translate([vis.width / 2, vis.height / 2])
         .precision(.1);
 
